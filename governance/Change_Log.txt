@@ -1,16 +1,13 @@
 ===== FILE: Change_Log.txt =====
 # Change Log — Note Compacter
 
-### [Stage 1 Completion Entry]
-(Previously recorded — 2025-10-31 — Environment and Storage Baseline)
+## Stage 1 Completion
+2025-10-31  Environment and storage baseline established on Windows.
 
-### [Stage 2 Completion Entry]
-
-**Date:** 2025-10-31  
-**Stage:** Stage 2 – Core Project Operations  
-**File(s) Affected:** electron/main.js, electron/storage.js, electron/preload.cjs, src/index.html, src/main.js, src/styles.css  
-**Type of Change:** Addition / Major Feature Expansion  
-**Description:** Implemented multi-project management, copy-on-ingest ingestion, editable master file persistence, project deletion, and export features. The renderer now includes a functional two-pane UI with a project list and master editor.  
-**Reason / Rationale:** Deliver the first fully usable iteration of Note Compacter, proving isolated project folders, safe file copying, durable master editing, and offline export.  
-**Verification:** Pass  
-**Notes:** Chromium restriction blocked window.prompt(); fixed by custom in-app modal. All five operations (Create, Ingest, Save, Export, Delete) function verified.
+## Stage 2 Completion
+2025-10-31  Core Project Operations implemented and verified.  
+Files affected: electron/main.js, electron/storage.js, electron/preload.cjs, src/index.html, src/main.js, src/styles.css.  
+Change Type: Major Feature Expansion.  
+Description: Added multi-project management, copy-on-ingest, editable master persistence, project deletion, and export. Renderer now includes two-pane UI with project list and editor.  
+Reason: Deliver first usable iteration proving copy-on-ingest safety and offline operation.  
+Verification: PASS. Prompt replaced by modal. All five core operations (Create, Ingest, Save, Export, Delete) confirmed.
