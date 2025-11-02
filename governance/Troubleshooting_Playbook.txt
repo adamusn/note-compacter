@@ -1,15 +1,18 @@
 ===== FILE: Troubleshooting_Playbook.txt =====
+
 # Troubleshooting Playbook — Note Compacter
 
-===== CASES ADDED — 2025-10-31 =====
-Symptom: Vite "Pre-transform error: Failed to load url /main.js".
-Root Cause: main.js located in src\src\main.js while Vite root was src.
-Fix: Move main.js to C:\var\www\note-compacter\src and reference with ./main.js in index.html.
+## Stage 1–2 Known Resolutions
+Vite Error "Failed to load url /main.js"  
+Cause: File misplaced under src\src\.  
+Fix: Move main.js to src\ and reference ./main.js in index.html.
 
-Symptom: Dev runner "spawn EINVAL" on Windows.
-Root Cause: Spawning electron via .cmd shim.
-Fix: Use execFile with the resolved path from `import electron from 'electron'` in electron/dev-runner.js.
+Dev Runner "spawn EINVAL" on Windows  
+Cause: Spawning electron via .cmd shim.  
+Fix: Use execFile with resolved electron path in electron\dev-runner.js.
 
-Symptom: Clicking "New Project" throws "prompt() is and will not be supported".
-Root Cause: Chromium restrictions on window.prompt inside Electron.
-Fix: Replace prompt() with an in-app modal; handlers wired in src/main.js with nameModal, nameInput, nameOk, nameCancel.
+UI Modal Error on "New Project"  
+Cause: window.prompt unsupported in Chromium under Electron.  
+Fix: Custom modal added in Stage 2 with ok/cancel handlers.
+
+Verification Note: All three fixes validated during Stage 2 exit.

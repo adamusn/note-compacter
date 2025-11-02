@@ -1,12 +1,16 @@
 ===== FILE: Supplemental_Instructions.txt =====
+
 # Supplemental Instructions — Note Compacter
 
-===== ADDENDUM — 2025-10-31 — Windows-Only Execution Rules =====
-All build, run, and verification steps are Windows-focused. Do not generate macOS/Linux guidance.
-Keep versions pinned as verified:
-- Node.js v22.20.0
-- npm 10.9.3
-- Electron 31.4.0
-- Vite 5.4.10
+## Windows-Only Execution
+All build, run, and verification steps assume Windows. Do not generate macOS or Linux guidance.
 
-When hot-fixing, prefer minimal patches and preserve this environment unless a version change is explicitly approved.
+## Version Pins
+Node v22.20.0  
+npm 10.9.3  
+Electron 31.4.0  
+Vite 5.4.10  
+
+## Hot-Fix Guidelines
+Apply the smallest change necessary. Preserve versions unless explicitly approved.  
+Always re-verify `npm run dev` and a fresh project creation after a fix.

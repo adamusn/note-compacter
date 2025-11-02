@@ -1,13 +1,20 @@
 ===== FILE: Project_File_Map.txt =====
+
 # Project File Map — Note Compacter
 
-===== MAP UPDATE — 2025-10-31 =====
-Code:
-- electron/storage.js — main-process storage module for projects, ingest, export, deletion.
-- src/styles.css — base layout styles for two-pane UI and in-app modal.
+## Code Structure (as of Stage 2)
+electron\storage.js — Main-process storage module for project I/O (create, ingest, export, delete).  
+electron\main.js — Bootstraps Electron window and IPC handlers.  
+electron\preload.cjs — Context-isolated bridge exposing noteCompacter APIs.  
+src\index.html — Defines two-pane UI and modal.  
+src\main.js — Implements renderer logic for project list and master editor.  
+src\styles.css — Layout and modal styling.
 
-Runtime Data (created at runtime; not committed to repo):
-- %APPDATA%\Note Compacter\projects\<id>\components\ — internal copies of ingested files.
-- %APPDATA%\Note Compacter\projects\<id>\master.txt — editable master per project.
-- %APPDATA%\Note Compacter\projects\<id>\project.json — metadata (id, name, createdAt).
-- %APPDATA%\Note Compacter\projects\<id>\ui.json — reserved for view prefs (Stage 3+).
+## Runtime Data (not committed)
+%APPDATA%\Note Compacter\projects\<id>\components\ — Internal copies of ingested files.  
+%APPDATA%\Note Compacter\projects\<id>\master.txt — Editable master per project.  
+%APPDATA%\Note Compacter\projects\<id>\project.json — Metadata (id, name, createdAt).  
+%APPDATA%\Note Compacter\projects\<id>\ui.json — Reserved for view preferences (Stage 3 onward).
+
+## Verification
+Mapping checked and validated during Stage 2 exit. Result: PASS.

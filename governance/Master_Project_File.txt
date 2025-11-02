@@ -1,18 +1,29 @@
-===== FILE: Master_Project_File.txt =====
+===== FILE: Master_Project_File.txt =====#
+
 # Master Project File — Note Compacter
 
-===== UPDATE — 2025-10-31 — Stage 1 & Stage 2 Status =====
-Current Stage Status:
-- Stage 1 (Environment & Storage Baseline): COMPLETE and VERIFIED on Windows. Electron + Vite baseline creates userData\data and writes stage1.marker.json. IPC preload bridge verified.
-- Stage 2 (Core Project Operations): COMPLETE and VERIFIED on Windows. App now supports multiple projects, copy-on-ingest of .txt files, editable master.txt with durable saves, export to .txt, and safe project deletion. Two-pane UI implemented (project list + editor).
+## Stage Status Summary
+Stage 1 (Environment & Storage Baseline) — COMPLETE and VERIFIED on Windows.  
+Electron + Vite baseline creates userData\data and writes stage1.marker.json.  
+IPC preload bridge verified.
 
-Platform Scope Reminder:
-- This project is **Windows-only** per owner directive. All instructions, paths, and verification steps assume Windows. macOS/Linux are intentionally out of scope.
+Stage 2 (Core Project Operations) — COMPLETE and VERIFIED on Windows.  
+App supports multiple projects, copy-on-ingest of .txt files, editable master.txt with durable saves, export to .txt, and safe project deletion.  
+Two-pane UI implemented (project list + editor).  
 
-Architecture Snapshot:
-- Main process manages all file I/O via electron/storage.js under userData\projects\<id> with subfolder components\ and files master.txt, project.json, ui.json.
-- Preload exposes a minimal API: listProjects, createProject, readMaster, saveMaster, ingestFiles, exportMaster, deleteProject, getStorageInfo.
-- Renderer uses a simple two-pane layout with toolbar and an in-app modal for project naming (Chromium prompt() avoided).
+## Platform Scope
+This project is **Windows-only** by owner directive.  
+All paths and commands assume Windows. macOS and Linux are out of scope.
 
-Planned Next Stage:
-- Stage 3 (Usability & Presentation Enhancements): templated master banners, component list panel, basic color theme, and improved readability. Execution pending plan approval.
+## Architecture Snapshot
+Main process handles all file I/O in `electron/storage.js` under `%APPDATA%\Note Compacter\projects\<id>` with subfolder `components\` and files `master.txt`, `project.json`, `ui.json`.  
+Preload exposes IPC APIs: `listProjects`, `createProject`, `readMaster`, `saveMaster`, `ingestFiles`, `exportMaster`, `deleteProject`, `getStorageInfo`.  
+Renderer provides a two-pane layout with toolbar and in-app modal for project naming.
+
+## Verification Snapshot
+Both stages executed on Node v22.20.0, npm 10.9.3, Electron 31.4.0, Vite 5.4.10.  
+Results: PASS — no defects blocking progression to Stage 3.
+
+## Next Planned Stage
+Stage 3 (Usability & Presentation Enhancements): templated master banners, component list panel, light color theme, and readability improvements.  
+Execution pending plan approval.

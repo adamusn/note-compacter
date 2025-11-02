@@ -1,12 +1,9 @@
 ===== FILE: Enhancement_Backlog.txt =====
 # Enhancement Backlog — Note Compacter
 
-===== NEW ENTRIES — 2025-10-31 =====
-Title: Templated Master Banners
-Detail: Replace simple BEGIN/END sections with approved three-line banner format for each component with file name, timestamp, and boundaries. Target: Stage 3.
+## Stage 2 Deferred Enhancements
+Templated Master Banners — Replace BEGIN/END sections with three-line banner including filename and timestamp. Target: Stage 3.  
+Component Tree Panel — Add left-side component list per project with highlight and open-in-editor ability. Target: Stage 3.  
+Color Theme & Readability — Add Windows-friendly color scheme and spacing for Stage 3.
 
-Title: Component Tree Panel
-Detail: Add left-side component list per project with collapsible groups, selection highlighting, and open-in-editor ability. Target: Stage 3.
-
-Title: Color Theme & Readability
-Detail: Introduce basic color accents, better spacing, and typography; maintain Windows-friendly look. Target: Stage 3.
+All entries confirmed and approved for Stage 3 planning.

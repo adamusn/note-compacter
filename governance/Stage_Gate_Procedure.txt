@@ -1,7 +1,12 @@
 ===== FILE: Stage_Gate_Procedure.txt =====
+
 # Stage-Gate Procedure — Note Compacter
 
-===== EVIDENCE LOG — 2025-10-31 =====
-Stage 1 Exit: Approved. Evidence recorded in Verification_Record.txt (Stage 1) and Change_Log.txt. Environment snapshot: Node v22.20.0, npm 10.9.3, Electron 31.4.0, Vite 5.4.10. Result: PASS.
-Stage 2 Exit: Approved. Evidence recorded in Verification_Record.txt (Stage 2) and Change_Log.txt. Same environment snapshot as Stage 1. Result: PASS.
-Next Gate: Prepare and approve Stage 3 Plan before execution.
+## Evidence Log
+2025-10-31  Stage 1 Exit — Approved. Environment and storage baseline verified on Windows. Result: PASS.  
+2025-10-31  Stage 2 Exit — Approved. Core Project Operations verified on Windows with same environment snapshot. Result: PASS.
+
+## Tagging Policy
+vS1.0 = Stage 1 baseline  
+vS2.0 = Stage 2 Core Project Operations  
+Each stage tag is immutable once published. If documentation is added later, create a minor tag (vS2.1).
