@@ -1,0 +1,55 @@
+* { box-sizing: border-box; }
+html, body, #app { height: 100%; margin: 0; font-family: Segoe UI, Arial, sans-serif; color: #1f2937; }
+
+/* Soft Windows-friendly theme */
+:root {
+  --border: #e5e7eb;
+  --muted: #6b7280;
+  --accent: #2563eb;
+  --accent-bg: #eff6ff;
+  --panel: #f9fafb;
+}
+.topbar { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; border-bottom: 1px solid var(--border); background: #fff; }
+.topbar button { margin-right: 8px; }
+.topbar .right button { margin-left: 8px; }
+
+.layout { display: grid; grid-template-columns: 300px 1fr; height: calc(100% - 50px); }
+.sidebar { border-right: 1px solid var(--border); padding: 10px; overflow: auto; background: var(--panel); }
+.editor { padding: 10px; display: flex; flex-direction: column; height: 100%; background: #fff; }
+
+h2 { margin: 6px 0 8px; }
+.subhead { margin: 14px 0 6px; color: var(--muted); font-weight: 600; }
+
+.project-list .proj,
+.component-list .comp {
+  padding: 6px 8px; border-radius: 6px; cursor: pointer; margin-bottom: 4px;
+}
+.project-list .proj.active { background: var(--accent-bg); border: 1px solid #dbeafe; }
+.component-list .comp.active { background: #f3f4f6; }
+
+#master, .comp-view {
+  flex: 1; width: 100%; resize: none; padding: 10px;
+  font-family: Consolas, 'Courier New', monospace; font-size: 14px; line-height: 1.4;
+  border: 1px solid var(--border); border-radius: 6px; background: #fff;
+}
+.comp-view { overflow: auto; white-space: pre-wrap; }
+
+.view-toggle { display: flex; align-items: center; gap: 8px; margin: 6px 0; }
+.view-toggle button { padding: 4px 10px; }
+.view-toggle button.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.muted { color: var(--muted); }
+
+.editor-header { display: flex; align-items: baseline; gap: 10px; }
+.dirty { color: #b91c1c; font-weight: 600; }
+.hidden { display: none; }
+
+.status { margin-top: 6px; color: #333; }
+.details { white-space: pre-wrap; color: #666; margin-top: 6px; }
+
+/* Modal (unchanged) */
+.modal.hidden { display: none; }
+.modal { position: fixed; inset: 0; background: rgba(0,0,0,0.35); display: flex; align-items: center; justify-content: center; z-index: 1000; }
+.modal-card { background: #fff; width: 360px; border-radius: 10px; padding: 16px; box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
+.modal-card h3 { margin: 0 0 10px; }
+.modal-card input { width: 100%; padding: 8px; margin: 4px 0 12px; font-size: 14px; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 8px; }

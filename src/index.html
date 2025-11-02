@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' http://localhost:5174 http://127.0.0.1:5174; style-src 'self' 'unsafe-inline'; connect-src 'self' http://localhost:5174 http://127.0.0.1:5174; img-src 'self' data:; frame-src 'none';"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Note Compacter — Stage 3</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="topbar">
+        <div class="left">
+          <button id="btnCreate">New Project</button>
+          <button id="btnDelete">Delete Project</button>
+        </div>
+        <div class="right">
+          <button id="btnIngest">Ingest Files</button>
+          <button id="btnRebuild">Rebuild Master</button>
+          <button id="btnSave">Save Master</button>
+          <button id="btnExport">Export Master</button>
+        </div>
+      </header>
+      <main class="layout">
+        <aside class="sidebar">
+          <h2>Projects</h2>
+          <div id="projectList" class="project-list"></div>
+          <h3 class="subhead">Components</h3>
+          <div id="componentList" class="component-list"></div>
+        </aside>
+        <section class="editor">
+          <div class="editor-header">
+            <h2 id="projectTitle">No project selected</h2>
+            <span id="dirtyFlag" class="dirty hidden">● Unsaved</span>
+          </div>
+          <div class="view-toggle">
+            <button id="viewMaster" class="active">Master</button>
+            <button id="viewComponent" disabled>Component</button>
+            <span id="componentLabel" class="muted"></span>
+          </div>
+          <textarea id="master" placeholder="Open or create a project to edit its master..."></textarea>
+          <pre id="componentView" class="comp-view hidden"></pre>
+          <div id="status" class="status"></div>
+          <pre id="details" class="details"></pre>
+        </section>
+      </main>
+    </div>
+
+    <!-- Name modal from Stage 2 -->
+    <div id="nameModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="nameLabel">
+      <div class="modal-card">
+        <h3 id="nameLabel">Create New Project</h3>
+        <input id="nameInput" type="text" placeholder="Project name" />
+        <div class="modal-actions">
+          <button id="nameCancel">Cancel</button>
+          <button id="nameOk">Create</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
