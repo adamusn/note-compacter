@@ -1,0 +1,13 @@
+===== FILE: Project_File_Map.txt =====
+# Project File Map — Note Compacter
+
+===== MAP UPDATE — 2025-10-31 =====
+Code:
+- electron/storage.js — main-process storage module for projects, ingest, export, deletion.
+- src/styles.css — base layout styles for two-pane UI and in-app modal.
+
+Runtime Data (created at runtime; not committed to repo):
+- %APPDATA%\Note Compacter\projects\<id>\components\ — internal copies of ingested files.
+- %APPDATA%\Note Compacter\projects\<id>\master.txt — editable master per project.
+- %APPDATA%\Note Compacter\projects\<id>\project.json — metadata (id, name, createdAt).
+- %APPDATA%\Note Compacter\projects\<id>\ui.json — reserved for view prefs (Stage 3+).

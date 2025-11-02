@@ -1,0 +1,18 @@
+===== FILE: Master_Project_File.txt =====
+# Master Project File — Note Compacter
+
+===== UPDATE — 2025-10-31 — Stage 1 & Stage 2 Status =====
+Current Stage Status:
+- Stage 1 (Environment & Storage Baseline): COMPLETE and VERIFIED on Windows. Electron + Vite baseline creates userData\data and writes stage1.marker.json. IPC preload bridge verified.
+- Stage 2 (Core Project Operations): COMPLETE and VERIFIED on Windows. App now supports multiple projects, copy-on-ingest of .txt files, editable master.txt with durable saves, export to .txt, and safe project deletion. Two-pane UI implemented (project list + editor).
+
+Platform Scope Reminder:
+- This project is **Windows-only** per owner directive. All instructions, paths, and verification steps assume Windows. macOS/Linux are intentionally out of scope.
+
+Architecture Snapshot:
+- Main process manages all file I/O via electron/storage.js under userData\projects\<id> with subfolder components\ and files master.txt, project.json, ui.json.
+- Preload exposes a minimal API: listProjects, createProject, readMaster, saveMaster, ingestFiles, exportMaster, deleteProject, getStorageInfo.
+- Renderer uses a simple two-pane layout with toolbar and an in-app modal for project naming (Chromium prompt() avoided).
+
+Planned Next Stage:
+- Stage 3 (Usability & Presentation Enhancements): templated master banners, component list panel, basic color theme, and improved readability. Execution pending plan approval.

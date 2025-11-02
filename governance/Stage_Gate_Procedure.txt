@@ -1,0 +1,7 @@
+===== FILE: Stage_Gate_Procedure.txt =====
+# Stage-Gate Procedure — Note Compacter
+
+===== EVIDENCE LOG — 2025-10-31 =====
+Stage 1 Exit: Approved. Evidence recorded in Verification_Record.txt (Stage 1) and Change_Log.txt. Environment snapshot: Node v22.20.0, npm 10.9.3, Electron 31.4.0, Vite 5.4.10. Result: PASS.
+Stage 2 Exit: Approved. Evidence recorded in Verification_Record.txt (Stage 2) and Change_Log.txt. Same environment snapshot as Stage 1. Result: PASS.
+Next Gate: Prepare and approve Stage 3 Plan before execution.

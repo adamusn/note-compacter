@@ -1,0 +1,12 @@
+===== FILE: Supplemental_Instructions.txt =====
+# Supplemental Instructions — Note Compacter
+
+===== ADDENDUM — 2025-10-31 — Windows-Only Execution Rules =====
+All build, run, and verification steps are Windows-focused. Do not generate macOS/Linux guidance.
+Keep versions pinned as verified:
+- Node.js v22.20.0
+- npm 10.9.3
+- Electron 31.4.0
+- Vite 5.4.10
+
+When hot-fixing, prefer minimal patches and preserve this environment unless a version change is explicitly approved.
