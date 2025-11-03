@@ -4,9 +4,16 @@
 
 ## Evidence Log
 2025-10-31  Stage 1 Exit — Approved. Environment and storage baseline verified on Windows. Result: PASS.  
-2025-10-31  Stage 2 Exit — Approved. Core Project Operations verified on Windows with same environment snapshot. Result: PASS.
+2025-10-31  Stage 2 Exit — Approved. Core Project Operations verified on Windows. Result: PASS.  
+2025-11-02  Stage 3 Exit — Approved. Usability and presentation enhancements verified. Result: PASS.  
+2025-11-02  Stage 4 Exit — Approved. Stability & Quality of Life features verified. Minor known issue deferred (Create Project modal focus when zero projects). Result: PASS with deferred item logged.
 
 ## Tagging Policy
 vS1.0 = Stage 1 baseline  
 vS2.0 = Stage 2 Core Project Operations  
-Each stage tag is immutable once published. If documentation is added later, create a minor tag (vS2.1).
+vS3.0 = Stage 3 Usability & Presentation  
+vS4.0 = Stage 4 Stability & QoL  
+Each stage tag is immutable once published. Documentation-only additions use minor tag bumps (e.g., vS4.1) if needed.
+
+## Git Flow
+New development starts from `main` into a `feature/stage-X` branch. After verification passes, merge with `--no-ff` back into `main`, push, and apply an annotated tag `vSX.0`. Use hotfix branches when addressing post-release issues that do not alter scope.

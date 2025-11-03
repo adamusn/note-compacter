@@ -1,9 +1,16 @@
 ===== FILE: Enhancement_Backlog.txt =====
+
 # Enhancement Backlog — Note Compacter
 
-## Stage 2 Deferred Enhancements
-Templated Master Banners — Replace BEGIN/END sections with three-line banner including filename and timestamp. Target: Stage 3.  
-Component Tree Panel — Add left-side component list per project with highlight and open-in-editor ability. Target: Stage 3.  
-Color Theme & Readability — Add Windows-friendly color scheme and spacing for Stage 3.
+## Deferred / Hotfix Candidates
+Modal Focus Trap (Create Project when zero projects) — Tighten initial focus and keyboard event capture so typing always lands in the input on first-open. Target: Stage 4 hotfix or Stage 5.
 
-All entries confirmed and approved for Stage 3 planning.
+## Upcoming QoL Ideas
+Theme Toggle — Add a light/dark toggle without impacting current dark default; persist preference in `ui.json`.  
+Keyboard Shortcuts — Add Ctrl+F to focus search field; F3/Shift+F3 for next/previous match; Ctrl+K for alias dialog when a component is selected.  
+Component Open-in-Master Jump — Provide a jump-to-banner helper from a component selection to the corresponding range in master.  
+Export Presets — Optional export profiles that include project name, user initials, and short date for standardized filenames.
+
+## Confirmed Completed (for history)
+Stage 3: Components panel, banners, theme and layout polish (complete).  
+Stage 4: Rename (project & alias), recycle-bin delete/restore, search-in-master, timestamped export defaults, dark theme (complete).

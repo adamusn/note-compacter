@@ -2,19 +2,20 @@
 
 # Project File Map — Note Compacter
 
-## Code Structure (as of Stage 2)
-electron\storage.js — Main-process storage module for project I/O (create, ingest, export, delete).  
-electron\main.js — Bootstraps Electron window and IPC handlers.  
-electron\preload.cjs — Context-isolated bridge exposing noteCompacter APIs.  
-src\index.html — Defines two-pane UI and modal.  
-src\main.js — Implements renderer logic for project list and master editor.  
-src\styles.css — Layout and modal styling.
+## Code Structure
+electron\main.js — Electron window creation, storage self-checks, and IPC registration for project, master, component, recycle, rebuild, and export operations.  
+electron\preload.cjs — Context-isolated bridge exposing the `noteCompacter` API to the renderer.  
+electron\storage.js — Main-process file I/O and policies, including copy-on-ingest, metadata-only rename, component aliasing, recycle-bin safe delete and restore, timestamped export default filename, and deterministic master rebuild using banners.  
+src\index.html — Application shell, deep bluish dark theme hooks, toolbar, components panel, recycle panel, editor area, search bar, and a reusable modal for naming, renaming, and alias.  
+src\styles.css — Windows-friendly dark theme, panels, buttons, modal layering and pointer behavior, editor styles, and search bar styling.  
+src\main.js — Renderer logic: project lifecycle, master editing with auto-save indicator, component viewing and alias editing, recycle listing and restore, search-in-master with next/prev navigation, modal orchestration with hardened focus routing.
 
 ## Runtime Data (not committed)
-%APPDATA%\Note Compacter\projects\<id>\components\ — Internal copies of ingested files.  
-%APPDATA%\Note Compacter\projects\<id>\master.txt — Editable master per project.  
-%APPDATA%\Note Compacter\projects\<id>\project.json — Metadata (id, name, createdAt).  
-%APPDATA%\Note Compacter\projects\<id>\ui.json — Reserved for view preferences (Stage 3 onward).
+%APPDATA%\Note Compacter\projects\<id>\components\ — Internal `.txt` copies plus optional `.meta.json` with alias/originalName/addedAt.  
+%APPDATA%\Note Compacter\projects\<id>\master.txt — Editable master file.  
+%APPDATA%\Note Compacter\projects\<id>\project.json — Project metadata (id, name, createdAt).  
+%APPDATA%\Note Compacter\projects\<id>\ui.json — View preferences reserved for future use.  
+%APPDATA%\Note Compacter\projects\.recycle\<token>\ — Recycle packets with moved files and `manifest.json` for safe restore.
 
-## Verification
-Mapping checked and validated during Stage 2 exit. Result: PASS.
+## Verification Map
+All files above were exercised during Stage 4 verification on Windows with Node v22.20.0, npm 10.9.3, Electron 31.4.0, and Vite 5.4.10. The app remained fully local-first and offline throughout testing.

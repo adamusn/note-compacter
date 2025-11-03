@@ -2,17 +2,28 @@
 
 # Troubleshooting Playbook — Note Compacter
 
-## Stage 1–2 Known Resolutions
-Vite Error "Failed to load url /main.js"  
-Cause: File misplaced under src\src\.  
-Fix: Move main.js to src\ and reference ./main.js in index.html.
+## Known Issues and Resolutions
 
-Dev Runner "spawn EINVAL" on Windows  
-Cause: Spawning electron via .cmd shim.  
-Fix: Use execFile with resolved electron path in electron\dev-runner.js.
+1) Vite “Failed to load url /main.js”  
+Root Cause: `main.js` located under `src\src\` or incorrect path in `index.html`.  
+Fix: Move `main.js` to `src\` and ensure `<script type="module" src="./main.js">`. Verify with `npm run dev` and confirm in the devtools Network tab that /main.js returns 200.
 
-UI Modal Error on "New Project"  
-Cause: window.prompt unsupported in Chromium under Electron.  
-Fix: Custom modal added in Stage 2 with ok/cancel handlers.
+2) Dev Runner “spawn EINVAL” on Windows  
+Root Cause: Spawning Electron via `.cmd` shim or unresolved path.  
+Fix: Use `execFile` with resolved Electron binary path in `electron\dev-runner.js` (applied in Stage 1/2). Confirm Electron launches once Vite is ready.
 
-Verification Note: All three fixes validated during Stage 2 exit.
+3) “New Project” prompt fails in Chromium prompt APIs  
+Root Cause: `window.prompt` behavior under Electron can be inconsistent.  
+Fix: Use in-app modal with explicit OK/Cancel and input focus management (added Stage 2+).
+
+4) Stage 4 Modal Input Not Typable when Zero Projects  
+Root Cause: Focus/keyboard routing edge case on first-open with no prior focusable element.  
+Fix (Interim): Press Enter to accept and create an untitled project, then rename.  
+Fix (Planned): Tighten modal focus trapping and event capture in Stage 4 hotfix without altering app flow.
+
+5) Export Overwrite Accidents  
+Root Cause: Re-using the same filename.  
+Fix: Stage 4 adds UTC timestamp to the default filename (user can still override). Verify path prompts correctly and the saved file contains the editor’s exact content.
+
+## Verification Notes
+After any change, always validate: launch, create project, ingest files, rebuild master, alias a component, search within master, export with timestamp, delete to recycle, and restore. Confirm original source files outside `%APPDATA%` remain unchanged.

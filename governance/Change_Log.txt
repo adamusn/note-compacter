@@ -1,13 +1,20 @@
 ===== FILE: Change_Log.txt =====
+
 # Change Log — Note Compacter
 
-## Stage 1 Completion
-2025-10-31  Environment and storage baseline established on Windows.
+## 2025-10-31 — Stage 1 Completion
+Environment and storage baseline established on Windows. Created `userData\data` and `stage1.marker.json`. IPC preload bridge verified.
 
-## Stage 2 Completion
-2025-10-31  Core Project Operations implemented and verified.  
-Files affected: electron/main.js, electron/storage.js, electron/preload.cjs, src/index.html, src/main.js, src/styles.css.  
-Change Type: Major Feature Expansion.  
-Description: Added multi-project management, copy-on-ingest, editable master persistence, project deletion, and export. Renderer now includes two-pane UI with project list and editor.  
-Reason: Deliver first usable iteration proving copy-on-ingest safety and offline operation.  
-Verification: PASS. Prompt replaced by modal. All five core operations (Create, Ingest, Save, Export, Delete) confirmed.
+## 2025-10-31 — Stage 2 Completion
+Core Project Operations implemented and verified. Added multi-project management, copy-on-ingest, editable master persistence, export, delete, and two-pane UI with custom naming modal.
+
+## 2025-11-02 — Stage 3 Completion
+Usability & presentation enhancements implemented. Components panel, standardized banners, refined theme, and layout polish. Verified stable operation on Windows.
+
+## 2025-11-02 — Stage 4 Completion
+Change Type: Feature Expansion & Safety Improvements.  
+Files Affected: electron/main.js, electron/preload.cjs, electron/storage.js, src/index.html, src/styles.css, src/main.js.  
+Description: Added metadata-only project rename and component aliasing; recycle-bin safe delete and restore with manifest; search-in-master with match navigation; timestamped export default filename; deep bluish dark theme.  
+Reason: Improve day-to-day reliability, reduce accidental loss, and make navigation/export safer without changing local-first architecture.  
+Verification: PASS with one deferred minor issue (Create Project modal may not capture typing when zero projects exist). Workaround documented; hotfix planned.  
+Tags: To be tagged as vS4.0 upon merge to main.

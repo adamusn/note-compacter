@@ -3,14 +3,17 @@
 # Supplemental Instructions — Note Compacter
 
 ## Windows-Only Execution
-All build, run, and verification steps assume Windows. Do not generate macOS or Linux guidance.
+All development and verification steps assume Windows. Do not generate macOS or Linux guidance. Use PowerShell examples and Windows path conventions exclusively.
 
 ## Version Pins
 Node v22.20.0  
 npm 10.9.3  
 Electron 31.4.0  
 Vite 5.4.10  
+No unpinned “latest” versions are permitted. If a security or compatibility update is required, record the rationale and verification steps in the Change Log and Verification Record, then bump versions explicitly.
 
-## Hot-Fix Guidelines
-Apply the smallest change necessary. Preserve versions unless explicitly approved.  
-Always re-verify `npm run dev` and a fresh project creation after a fix.
+## Deterministic Build & Fix Policy
+Always start fixes from a clean, verified baseline. Apply the smallest change possible, avoid introducing new dependencies, and re-run `npm run dev` followed by a fresh project create/ingest/export cycle. If a fix fails twice, roll back to last known-good, update the hypothesis, and attempt a smaller patch. Record each attempt in the Verification Record, including error text and resolution.
+
+## Modal Focus Guidance (Interim)
+Until the Stage 4 modal edge case is patched, the user may press Enter on the Create Project modal to create an untitled project, then immediately rename. This path is acceptable for production use because it preserves all invariants and never modifies original files.

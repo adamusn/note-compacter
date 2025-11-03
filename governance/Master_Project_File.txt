@@ -2,28 +2,23 @@
 
 # Master Project File — Note Compacter
 
-## Stage Status Summary
-Stage 1 (Environment & Storage Baseline) — COMPLETE and VERIFIED on Windows.  
-Electron + Vite baseline creates userData\data and writes stage1.marker.json.  
-IPC preload bridge verified.
-
-Stage 2 (Core Project Operations) — COMPLETE and VERIFIED on Windows.  
-App supports multiple projects, copy-on-ingest of .txt files, editable master.txt with durable saves, export to .txt, and safe project deletion.  
-Two-pane UI implemented (project list + editor).  
+## Product Vision
+Note Compacter is a lightweight, local-first Windows desktop application that ingests plain text notes, copies them into isolated project storage, and compacts them into an editable master file. It never modifies or links to the user’s originals, and it remains fully functional offline. Each project maintains its own master file, a components directory containing internal copies of source files, and metadata that supports safe operation and future enhancements.
 
 ## Platform Scope
-This project is **Windows-only** by owner directive.  
-All paths and commands assume Windows. macOS and Linux are out of scope.
+This project is Windows-only by owner directive. All paths, commands, and verification procedures are written for Windows. macOS and Linux are out of scope.
 
 ## Architecture Snapshot
-Main process handles all file I/O in `electron/storage.js` under `%APPDATA%\Note Compacter\projects\<id>` with subfolder `components\` and files `master.txt`, `project.json`, `ui.json`.  
-Preload exposes IPC APIs: `listProjects`, `createProject`, `readMaster`, `saveMaster`, `ingestFiles`, `exportMaster`, `deleteProject`, `getStorageInfo`.  
-Renderer provides a two-pane layout with toolbar and in-app modal for project naming.
+The Electron main process performs all file I/O and enforces the copy-on-ingest policy. The renderer provides a two-pane workspace with a project list and an editor area. The preload bridge exposes a narrow set of IPC methods for project, master, component, recycle, and export operations. Runtime data resides under `%APPDATA%\Note Compacter\projects\<id>` with `components\`, `master.txt`, `project.json`, and `ui.json`. A `.recycle` area at `%APPDATA%\Note Compacter\projects\.recycle\<token>\` holds moved items and a `manifest.json` to enable restores without touching original source files.
 
-## Verification Snapshot
-Both stages executed on Node v22.20.0, npm 10.9.3, Electron 31.4.0, Vite 5.4.10.  
-Results: PASS — no defects blocking progression to Stage 3.
+## Stage Status Summary
+Stage 1 (Environment & Storage Baseline) — Complete and verified on Windows. Electron + Vite baseline created `userData\data` and `stage1.marker.json`. IPC preload bridge verified and self-healing storage checks confirmed.  
+Stage 2 (Core Project Operations) — Complete and verified on Windows. The app supports multi-project management, copy-on-ingest of `.txt` files, an editable `master.txt` with durable saves, export to `.txt`, and safe project deletion. Two-pane UI and custom modal for naming implemented.  
+Stage 3 (Usability & Presentation Enhancements) — Complete and verified on Windows. Components panel, standardized banners in the master file, refined layout, and a cohesive theme were delivered and confirmed stable.  
+Stage 4 (Stability & Quality of Life) — Complete and verified on Windows. Project rename (metadata only), component aliases (metadata only), recycle-bin style safe delete and restore, in-editor search with match navigation, timestamped export default filenames, and a deep bluish dark theme were implemented. A minor edge-case defect remains when opening the Create Project modal with zero projects; typing focus may not land in the field on some first-open scenarios. Impact is low because OK/Enter creates the project and rename works normally; this is deferred to Stage 4 Hotfix or Stage 5.
+
+## Environment Snapshot
+Windows 10 Workstation, Node v22.20.0, npm 10.9.3, Electron 31.4.0, Vite 5.4.10. No new dependencies were introduced in Stage 4.
 
 ## Next Planned Stage
-Stage 3 (Usability & Presentation Enhancements): templated master banners, component list panel, light color theme, and readability improvements.  
-Execution pending plan approval.
+Stage 5 (to be proposed) will focus on polishing the modal focus defect, optional dark/light theme toggle, and initial keyboard shortcuts for component navigation and search focus. A Stage 4 hotfix may be cut earlier if desired to address the modal input focus edge case without waiting for Stage 5.

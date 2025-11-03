@@ -1,13 +1,29 @@
 ===== FILE: Verification_Record.txt =====
+
 # Verification Record — Note Compacter
 
-## Stage 2 Verification
-Date: 2025-10-31  
-Stage: Stage 2 — Core Project Operations  
-Files Verified: electron/main.js, electron/storage.js, electron/preload.cjs, src/index.html, src/main.js, src/styles.css  
-Environment: Windows 10 Workstation; Node v22.20.0; npm 10.9.3; Electron 31.4.0; Vite 5.4.10  
-Other Tools: concurrently 8.2.2; wait-on 8.0.1; Git for Windows  
+## Stage
+Stage 4 — Stability & Quality of Life
 
-Verification Steps: Ran `npm run dev`; created project; ingested .txt files; verified append; edited master; saved; re-ran app; verified persistence; exported; deleted project; confirmed original files unchanged.  
-Result: PASS  
-Notes: Two-pane UI rendered correctly; custom modal for project naming functional; no errors in console.
+## Environment
+Windows 10 Workstation; Node v22.20.0; npm 10.9.3; Electron 31.4.0; Vite 5.4.10. No network required; all tests performed offline.
+
+## Files Exercised
+electron/main.js; electron/preload.cjs; electron/storage.js; src/index.html; src/styles.css; src/main.js.
+
+## Test Procedure (Windows)
+1. Launch with `npm run dev`. Confirm the dark bluish theme renders, sidebar and editor load without errors.  
+2. Create a project. If the Create Project modal does not capture typing on first launch with zero projects, press Enter to create an untitled project, then immediately rename; verify rename persists across reload.  
+3. Ingest two `.txt` files. Confirm internal copies appear under Components with original names; open a component and view text.  
+4. Set a component alias, clear it, and set it again. Confirm alias displays in the Components list but banners in the master remain driven by internal filename and original name.  
+5. Use the search bar to find a term that appears in master multiple times. Step through Prev/Next; verify selection moves and count updates.  
+6. Click Rebuild Master to reconstruct content deterministically from components. Verify banners are present and ordered as expected.  
+7. Export the master and confirm the default filename includes `<ProjectName>_<UTC-timestamp>.txt`. Open the exported file to verify exact content.  
+8. Delete one component. Confirm it disappears from Components and appears in Recycle. Restore it and confirm it reappears intact.  
+9. Delete the entire project. Confirm it moves to Recycle with a token entry. Restore it and confirm master and components return intact.
+
+## Results
+PASS with one deferred minor defect. All Stage 4 features work as designed. The Create Project modal may not capture typing when there are zero projects; OK/Enter still creates a project and rename works immediately afterward. The defect is recorded in the Troubleshooting Playbook and Enhancement Backlog for a hotfix.
+
+## Evidence
+Observed correct behavior for copy-on-ingest, alias persistence via `.meta.json`, recycle manifest-based restore, search navigation inside `<textarea>`, and timestamped export defaults. No original user files modified during any operation.
